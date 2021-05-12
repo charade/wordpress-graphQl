@@ -13,7 +13,9 @@ module.exports = {
    * Gatsby has a rich ecosystem of plugins.
    * If you need any more you can search here: https://www.gatsbyjs.com/plugins/
    */
+
   plugins: [
+    "gatsby-plugin-react-helmet-async",
     {
       /**
        * First up is the WordPress source plugin that connects Gatsby
@@ -68,7 +70,6 @@ module.exports = {
     },
 
     // See https://www.gatsbyjs.com/plugins/gatsby-plugin-react-helmet/?=gatsby-plugin-react-helmet
-    `gatsby-plugin-react-helmet`,
 
     /**
      * this (optional) plugin enables Progressive Web App + Offline functionality
