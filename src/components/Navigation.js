@@ -1,5 +1,6 @@
 import React from 'react';
-import {Link, useStaticQuery, graphql} from 'gatsby';
+import { Link, useStaticQuery, graphql} from 'gatsby';
+
 
 const Navigation = () => {
     const data = useStaticQuery(graphql`
@@ -15,16 +16,32 @@ const Navigation = () => {
         }
       }
     `)
+    
     const menu = data.wpMenu.menuItems.nodes
     return (
-      <nav>
-        {menu.map((el) => (
-          <Link key={el.id} to={el.url}>
-            {el.label}
-          </Link>
-        ))}
+      <nav className = 'navBar'>
+        <ul className = 'link-wrapper'>
+            {menu.map((el) => (
+                <li key={el.id} className = "link-container">
+                {
+                    el.url.startsWith('http') ?
+                    (<a href={el.url}  className = 'link'>
+                        {el.label}
+                    </a>)
+                    :
+                  
+                   ( <Link to={el.url}  className = 'link'>
+                      {el.label}
+                    </Link>)
+                }
+                 
+                </li>
+            
+            ))}
+        </ul>
       </nav>
     )
   }
   
-  export default Navigation
+
+export default Navigation
